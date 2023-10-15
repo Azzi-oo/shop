@@ -18,7 +18,7 @@ class Cart:
         """
         Добавить товар в корзину либо обновить его количество
         """
-        product_id = str(product_id)
+        product_id = str(product.id)
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': 0,
                                      'price': str(product.price)}
@@ -47,7 +47,7 @@ class Cart:
         Прокрутить товарные позиции in цикле и
         получить товары из базы данных
         """
-        product_ids = self.cart_keys()
+        product_ids = self.cart_keys
         products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()
         for product in products:
@@ -62,7 +62,7 @@ class Cart:
         Подсчитать все товарные позиции в корзине
         """
         return sum(item['quantity'] for item in self.cart.values())
-    
+
     def get_total_price(self):
         # удалить корзину из сеанса
         del self.session[settings.CART_SESSION_ID]
