@@ -1,4 +1,4 @@
-from to import BytesIO
+from io import BytesIO
 from celery import shared_task
 # import weasyprint
 from django.template.loader import render_to_string
