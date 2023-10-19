@@ -30,6 +30,5 @@ def product_detail(request, id, slug):
     return render(request,
                   'shop/product/detail.html',
                   {'product': product,
-                   'cart_product_form': cart_product_form},
-                   'recommended_products': recommended_products)
-
+                   'cart_product_form': cart_product_form,
+                   'recommended_products': recommended_products})

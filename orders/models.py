@@ -4,15 +4,21 @@ from decimal import Decimal
 from django.core.validators import MinValueValidator, \
                                    MaxValueValidator
 from coupons.models import Coupon
+from django.utils.translation import gettext_lazy as _
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    email = models.EmailField()
-    address = models.CharField(max_length=200)
-    postal_code = models.CharField(max_length=200)
-    city = models.CharField(max_length=100)
+    first_name = models.CharField(_('first_name'),
+                                  max_length=200)
+    last_name = models.CharField(_('last_name'),
+                                 max_length=200)
+    email = models.EmailField(_('e-mail'))
+    address = models.CharField(_('address'),
+                               max_length=200)
+    postal_code = models.CharField(_('postal_code'),
+                                   max_length=200)
+    city = models.CharField(_('city'),
+                            max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     paid = models.BooleanField(default=False)
